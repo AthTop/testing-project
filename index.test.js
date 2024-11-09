@@ -1,4 +1,4 @@
-import { capitalize } from "./index.js";
+import { capitalize, reverseString } from "./index.js";
 
 it("capitalize string", () => {
   expect(capitalize("abc")).toBe("ABC");
@@ -23,3 +23,21 @@ it("capitalize with numbers", () => {
 it("capitalize with special characters", () => {
   expect(capitalize("abc#@!")).toBe("ABC#@!");
 });
+
+it("reverse string", () => {
+  expect(reverseString("abc")).toBe("cba");
+});
+
+it("reverse another string", () => {
+  expect(reverseString("def")).toBe("fed");
+});
+it("reverse string with space", () => {
+  expect(reverseString("a b c")).toBe("c b a");
+});
+it("reverse string with numbers", () => {
+  expect(reverseString("abc123")).toBe("321cba");
+});
+it("reverse string with special characters", () => {
+    expect(reverseString("!@#")).toBe("#@!");
+  });
+  
