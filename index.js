@@ -29,3 +29,21 @@ export const calculator = {
     return a * b;
   },
 };
+
+export function caesarCipher(string, shiftFactor) {
+  return string
+    .split("")
+    .map((char) => {
+      if (!isLetter(char)) return char;
+      return cipher(char, shiftFactor);
+    })
+    .join("");
+}
+function isLetter(letter) {
+  return letter.toUpperCase() != letter.toLowerCase();
+}
+function cipher(char, shiftFactor) {
+  let charPos = char.charCodeAt() - "a".charCodeAt();
+  charPos = (charPos + shiftFactor) % 26;
+  return String.fromCharCode(charPos + "a".charCodeAt());
+}

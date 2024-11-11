@@ -1,4 +1,9 @@
-import { capitalize, reverseString, calculator } from "./index.js";
+import {
+  capitalize,
+  reverseString,
+  calculator,
+  caesarCipher,
+} from "./index.js";
 
 // capitalize tests
 it("capitalize string", () => {
@@ -80,4 +85,22 @@ it("calculator multiply non numbers", () => {
   expect(() => {
     calculator.multiply("a", "$");
   }).toThrow(/number/);
+});
+
+// caesarCipher tests
+it("cipher test abc", () => {
+  expect(caesarCipher("abc", 1)).toBe("bcd");
+});
+
+it("cipher test bcd", () => {
+  expect(caesarCipher("bcd", 3)).toBe("efg");
+});
+it("cipher loop over xyz", () => {
+  expect(caesarCipher("xyz", 3)).toBe("abc");
+});
+it("cipher case prservation", () => {
+  expect(caesarCipher("HeLLo", 3)).toBe("KhOOr");
+});
+it("cipher test non-alpha", () => {
+  expect(caesarCipher("Hello, World!", 3)).toBe("Khoor, Zruog!");
 });
