@@ -3,6 +3,7 @@ import {
   reverseString,
   calculator,
   caesarCipher,
+  analyzeArray,
 } from "./index.js";
 
 // capitalize tests
@@ -103,4 +104,27 @@ it("cipher case prservation", () => {
 });
 it("cipher test non-alpha", () => {
   expect(caesarCipher("Hello, World!", 3)).toBe("Khoor, Zruog!");
+});
+
+// analyzeArray tests
+it("analyze basic test", () => {
+  expect(analyzeArray([1, 2, 3, 4])).toEqual({
+    min: 1,
+    max: 4,
+    length: 4,
+    average: 2.5,
+  });
+});
+it("analyze basic test", () => {
+  expect(analyzeArray([2, 3, 4, 5])).toEqual({
+    min: 2,
+    max: 5,
+    length: 4,
+    average: 3.5,
+  });
+});
+it("analyze numbers", () => {
+  expect(() => {
+    analyzeArray(["a", "b", 4, 5]);
+  }).toThrow(/number/);
 });

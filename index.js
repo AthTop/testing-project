@@ -47,3 +47,15 @@ function cipher(char, shiftFactor) {
   charPos = (charPos + shiftFactor) % 26;
   return String.fromCharCode(charPos + "a".charCodeAt());
 }
+
+export function analyzeArray(array) {
+  array.forEach((element) => {
+    if (isNaN(element)) throw new Error("Array must have only numbers in it");
+  });
+  return {
+    min: Math.min(...array),
+    max: Math.max(...array),
+    length: array.length,
+    average: array.reduce((sum, current) => sum + current, 0) / array.length,
+  };
+}
